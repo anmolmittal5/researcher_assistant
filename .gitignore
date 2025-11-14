@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+env/
+venv/
+.venv/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Packaging
+dist/
+build/
+*.whl
+poetry.lock
+
+# OneDrive temp
+~$*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
