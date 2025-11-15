@@ -1,8 +1,4 @@
 # ui/streamlit_app.py
-"""
-Pre-final (simple) Streamlit UI for Research Assistant.
-This lightweight version is safe to push now and later can be replaced with the final version.
-"""
 
 import os
 import sys
