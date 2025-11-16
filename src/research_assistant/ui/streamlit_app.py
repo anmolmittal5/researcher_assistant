@@ -1,24 +1,23 @@
-# ui/streamlit_app.py
+"""Streamlit UI for Research Assistant with real-time streaming."""
 
 import os
 import sys
-import json
+import time
 from pathlib import Path
-from datetime import datetime
+from typing import Dict, Any, List
 import streamlit as st
-from streamlit_option_menu import option_menu
+from dotenv import load_dotenv
 
-# make sure repo root is importable for the planner stub
-REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+# Add src to path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-# Try to import the planner stub if present; otherwise use a local fallback
-try:
-    from src.research_assistant.agents.planner_agent import plan as planner_plan
-except Exception:
-    planner_plan = None
+from research_assistant.graph import create_workflow, AgentState
+from research_assistant.graph.state import AgentState as StateType
 
+# Load environment variables
+load_dotenv()
+
+# Page configuration
 st.set_page_config(
     page_title="Research Assistant",
     page_icon="🔬",
@@ -26,413 +25,293 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for better interactivity
+# Custom CSS for better UI
 st.markdown("""
 <style>
-    .stChatMessage {
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
-    }
-    .user-message {
-        background-color: #e3f2fd;
-        border-left: 4px solid #2196f3;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
-    }
-    .assistant-message {
-        background-color: #f5f5f5;
-        border-left: 4px solid #4caf50;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
+    .main-header {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #1f77b4;
     }
     .agent-badge {
         display: inline-block;
         padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.85rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
         font-weight: 600;
         margin-right: 0.5rem;
     }
-    .badge-planner {
-        background-color: #ff9800;
-        color: white;
-    }
-    .badge-research {
-        background-color: #2196f3;
-        color: white;
-    }
-    .badge-coder {
-        background-color: #9c27b0;
-        color: white;
-    }
+    .planner-badge { background-color: #e3f2fd; color: #1976d2; }
+    .research-badge { background-color: #f3e5f5; color: #7b1fa2; }
+    .coder-badge { background-color: #e8f5e9; color: #388e3c; }
+    .reporter-badge { background-color: #fff3e0; color: #e65100; }
     .trace-container {
-        border: 1px solid #e0e0e0;
-        border-radius: 0.5rem;
+        background-color: #f8f9fa;
+        border-left: 4px solid #1f77b4;
         padding: 1rem;
-        margin-bottom: 1rem;
-        background-color: #fafafa;
+        margin: 0.5rem 0;
+        border-radius: 0.25rem;
     }
-    .trace-section {
-        margin-top: 0.5rem;
-    }
-    .expandable-content {
-        max-height: 300px;
-        overflow-y: auto;
-    }
-    .status-indicator {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        margin-right: 0.5rem;
-    }
-    .status-active {
-        background-color: #4caf50;
-        animation: pulse 1.5s infinite;
-    }
-    .status-idle {
-        background-color: #9e9e9e;
-    }
-    @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-    }
+    .thought-text { color: #1976d2; font-weight: 500; }
+    .act-text { color: #f57c00; font-weight: 500; }
+    .observation-text { color: #388e3c; font-weight: 500; }
 </style>
 """, unsafe_allow_html=True)
 
-st.title("🔬 Research Assistant")
-st.markdown("Multi-agent ReAct system for research and code generation")
 
-# Initialize session state
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-if "traces" not in st.session_state:
-    st.session_state.traces = []
-if "processing" not in st.session_state:
-    st.session_state.processing = False
-if "selected_model" not in st.session_state:
-    st.session_state.selected_model = "gpt-4o"
-if "google_drive_enabled" not in st.session_state:
-    st.session_state.google_drive_enabled = False
-if "trace_expanded" not in st.session_state:
-    st.session_state.trace_expanded = {}
+def get_agent_badge(agent_name: str) -> str:
+    """Get styled badge for agent name."""
+    badges = {
+        "planner": '<span class="agent-badge planner-badge">📋 Planner</span>',
+        "research": '<span class="agent-badge research-badge">🔍 Research</span>',
+        "coder": '<span class="agent-badge coder-badge">💻 Coder</span>',
+        "reporter": '<span class="agent-badge reporter-badge">📝 Reporter</span>',
+    }
+    return badges.get(agent_name.lower(), f'<span class="agent-badge">{agent_name}</span>')
 
-# Sidebar with settings and controls
-with st.sidebar:
-    st.header("⚙️ Settings")
+
+def format_trace(trace: Dict[str, Any], agent_name: str = "") -> str:
+    """Format a ReAct trace for display."""
+    html = f'<div class="trace-container">'
+    if agent_name:
+        html += get_agent_badge(agent_name)
     
-    # Model selection
-    models = ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"]
-    selected_model = st.selectbox(
-        "🤖 Model",
-        models,
-        index=models.index(st.session_state.selected_model) if st.session_state.selected_model in models else 0
-    )
-    st.session_state.selected_model = selected_model
+    if trace.get("thought"):
+        html += f'<div class="thought-text"><strong>💭 Thought:</strong> {trace["thought"]}</div>'
     
-    # Google Drive toggle
-    google_drive = st.checkbox(
-        "📁 Enable Google Drive",
-        value=st.session_state.google_drive_enabled,
-        help="Enable Google Drive integration for document access"
-    )
-    st.session_state.google_drive_enabled = google_drive
+    if trace.get("act"):
+        html += f'<div class="act-text"><strong>⚡ Act:</strong> {trace["act"]}</div>'
     
-    st.divider()
+    if trace.get("observation"):
+        obs = str(trace["observation"])[:500]  # Truncate long observations
+        if len(str(trace["observation"])) > 500:
+            obs += "..."
+        html += f'<div class="observation-text"><strong>👁️ Observation:</strong> {obs}</div>'
     
-    # Session controls
-    st.subheader("📊 Session Info")
-    st.metric("Messages", len(st.session_state.messages))
-    st.metric("Traces", len(st.session_state.traces))
-    
-    if st.session_state.processing:
-        st.status("⏳ Processing...", state="running")
-    
-    st.divider()
-    
-    # Action buttons
-    if st.button("🗑️ Clear Chat", use_container_width=True):
-        st.session_state.messages = []
-        st.session_state.traces = []
-        st.session_state.trace_expanded = {}
-        st.rerun()
-    
-    if st.button("📥 Export Conversation", use_container_width=True):
-        export_data = {
-            "messages": st.session_state.messages,
-            "traces": st.session_state.traces,
-            "timestamp": datetime.now().isoformat(),
-            "model": st.session_state.selected_model
-        }
-        st.download_button(
-            label="💾 Download JSON",
-            data=json.dumps(export_data, indent=2),
-            file_name=f"conversation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
-            mime="application/json"
-        )
-    
-    st.divider()
-    
-    # Tips and help
-    with st.expander("💡 Tips"):
-        st.markdown("""
-        - Enter a research query to start
-        - Watch execution logs in real-time
-        - Click on traces to expand details
-        - Export conversations for later review
-        """)
-    
-    with st.expander("❓ Example Queries"):
-        example_queries = [
-            "Research ReAct methodology and summarize key findings",
-            "Find recent papers on transformer architectures",
-            "Search for best practices in multi-agent systems"
+    html += '</div>'
+    return html
+
+
+def display_logs(logs_container, traces: List[Dict[str, Any]], current_agent: str = ""):
+    """Display ReAct traces in the logs container (only Research and Coder agents)."""
+    with logs_container:
+        if not traces:
+            st.info("No execution traces yet. Submit a query to see agent reasoning.")
+            return
+        
+        st.markdown("### 🔄 Agent Execution Logs")
+        st.markdown("*Showing Research and Coder agent traces*")
+        st.markdown("---")
+        
+        # Filter to show only Research and Coder traces
+        filtered_traces = [
+            trace for trace in traces 
+            if trace.get("agent", "").lower() in ["research", "coder"]
         ]
-        for i, query in enumerate(example_queries):
-            if st.button(query, key=f"example_{i}", use_container_width=True):
-                st.session_state.example_query = query
-                st.rerun()
+        
+        if not filtered_traces:
+            st.info("No Research or Coder agent traces yet.")
+            return
+        
+        for i, trace in enumerate(filtered_traces):
+            agent = trace.get("agent", current_agent)
+            st.markdown(format_trace(trace, agent), unsafe_allow_html=True)
 
-# Main layout - two columns
-col1, col2 = st.columns([2, 1], gap="large")
 
-with col1:
-    st.header("💬 Conversation")
-    
-    # Chat container
-    chat_container = st.container()
-    
-    with chat_container:
-        # Display chat messages with better formatting
-        for idx, msg in enumerate(st.session_state.messages):
-            role = msg.get("role", "user")
-            content = msg.get("content", "")
-            timestamp = msg.get("timestamp", "")
-            
-            if role == "user":
-                st.markdown(
-                    f'<div class="user-message">'
-                    f'<strong>👤 You</strong>'
-                    f'{f" <small style="color: #666;">({timestamp})</small>" if timestamp else ""}'
-                    f'<br>{content}'
-                    f'</div>',
-                    unsafe_allow_html=True
-                )
-            else:
-                # Add copy button for assistant messages
-                col_msg, col_copy = st.columns([10, 1])
-                with col_msg:
-                    st.markdown(
-                        f'<div class="assistant-message">'
-                        f'<strong>🤖 Assistant</strong>'
-                        f'{f" <small style="color: #666;">({timestamp})</small>" if timestamp else ""}'
-                        f'<br>{content}'
-                        f'</div>',
-                        unsafe_allow_html=True
-                    )
-                with col_copy:
-                    if st.button("📋", key=f"copy_{idx}", help="Copy to clipboard"):
-                        st.code(content, language=None)
-    
-    # Processing indicator
-    if st.session_state.processing:
-        st.info("🔄 Processing your request...")
-        st.progress(0.5)
-    
-    st.divider()
-    
-    # Input area with improved UX
-    query_input = st.text_area(
-        "Enter your research query or task",
-        value=st.session_state.get("example_query", ""),
-        height=100,
-        placeholder="e.g., Research ReAct methodology and summarize key findings...",
-        key="query_input"
-    )
-    
-    # Clear example query after use
-    if "example_query" in st.session_state:
-        st.session_state.example_query = ""
-    
-    col_btn1, col_btn2, col_btn3 = st.columns([2, 1, 1])
-    
-    with col_btn1:
-        run_button = st.button("🚀 Run ReAct", type="primary", use_container_width=True)
-    
-    with col_btn2:
-        regenerate_button = st.button("🔄 Regenerate", use_container_width=True, disabled=len(st.session_state.messages) == 0)
-    
-    with col_btn3:
-        clear_input = st.button("🗑️ Clear", use_container_width=True)
-        if clear_input:
-            st.session_state.query_input = ""
-            st.rerun()
-    
-    # Handle regenerate: remove last assistant message and reuse last user query
-    if regenerate_button and len(st.session_state.messages) > 0:
-        # Remove last assistant message if exists
-        if st.session_state.messages and st.session_state.messages[-1].get("role") == "assistant":
-            st.session_state.messages.pop()
-        # Get last user message
-        last_user_msg = next(
-            (msg for msg in reversed(st.session_state.messages) if msg.get("role") == "user"),
-            None
-        )
-        if last_user_msg:
-            query_input = last_user_msg.get("content", "")
-            run_button = True
-    
-    # Process query
-    if run_button and query_input.strip():
-        st.session_state.processing = True
+def run_workflow_streaming(goal: str, chat_container, logs_container):
+    """Run workflow with streaming updates."""
+    try:
+        # Initialize workflow
+        workflow = create_workflow()
         
-        # Add user message (only if not regenerating)
-        if not regenerate_button:
-            user_message = {
-                "role": "user",
-                "content": query_input.strip(),
-                "timestamp": datetime.now().strftime("%H:%M:%S")
-            }
-            st.session_state.messages.append(user_message)
-        
-        # Process with planner
-        if planner_plan:
-            with st.spinner("Generating plan..."):
-                try:
-                    prompt_text = planner_plan(query_input.strip())
-                    assistant_text = f"✅ Planner generated a plan. Check the execution logs for details.\n\n**Summary:** The goal has been decomposed into actionable tasks for specialist agents."
-                    st.session_state.traces.append({
-                        "agent": "planner",
-                        "thought": "Generated plan prompt",
-                        "act": "Create prompt for specialist agents",
-                        "observation": prompt_text[:800] if len(prompt_text) > 800 else prompt_text,
-                        "timestamp": datetime.now().strftime("%H:%M:%S")
-                    })
-                except Exception as e:
-                    assistant_text = f"❌ Error: {str(e)}"
-        else:
-            assistant_text = (
-                "✅ Planner (stub) executed. Breaking goal into tasks:\n\n"
-                "- **Research tasks**: Route to Research agent\n"
-                "- **Coding tasks**: Route to Coder agent\n\n"
-                "See execution logs for details."
-            )
-            st.session_state.traces.append({
-                "agent": "planner",
-                "thought": "Decompose goal into research and code tasks",
-                "act": "Route to Research and Coder agents",
-                "observation": "Planner stub used; no external LLM called",
-                "timestamp": datetime.now().strftime("%H:%M:%S")
-            })
-        
-        # Add assistant message
-        assistant_message = {
-            "role": "assistant",
-            "content": assistant_text,
-            "timestamp": datetime.now().strftime("%H:%M:%S")
+        # Initial state
+        initial_state: AgentState = {
+            "goal": goal,
+            "plan": None,
+            "tasks": [],
+            "current_task": None,
+            "research_results": None,
+            "coder_results": None,
+            "planner_results": None,
+            "reporter_results": None,
+            "results": [],
+            "traces": [],
+            "next_agent": None,
+            "is_complete": False,
         }
-        st.session_state.messages.append(assistant_message)
         
-        st.session_state.processing = False
-        st.rerun()
-
-with col2:
-    st.header("📊 Execution Logs")
-    
-    if not st.session_state.traces:
-        st.info("📝 Execution logs will appear here after running the planner.")
-    else:
-        # Filter and search
-        agent_filter = st.multiselect(
-            "Filter by agent",
-            options=["planner", "research", "coder"],
-            default=[],
-            label_visibility="collapsed"
-        )
+        # Create placeholder for AI response
+        ai_placeholder = chat_container.empty()
         
-        # Show traces in reverse chronological order
-        filtered_traces = st.session_state.traces
-        if agent_filter:
-            filtered_traces = [t for t in filtered_traces if t.get("agent", "").lower() in agent_filter]
+        # Stream workflow execution
+        all_traces = []
         
-        for idx, trace in enumerate(reversed(filtered_traces[-10:])):
-            trace_id = len(filtered_traces) - idx - 1
-            agent = trace.get("agent", "agent").lower()
-            timestamp = trace.get("timestamp", "")
+        # Show initial processing message
+        with ai_placeholder.chat_message("assistant"):
+            response_placeholder = st.empty()
+            response_text = "🤔 Processing your request..."
+            response_placeholder.markdown(response_text)
+        
+        # Execute workflow with streaming
+        try:
+            # Use astream for real-time updates if available
+            # For now, we'll use invoke and update UI incrementally
+            final_state = workflow.invoke(initial_state)
             
-            # Agent badge with color
-            badge_class = {
-                "planner": "badge-planner",
-                "research": "badge-research",
-                "coder": "badge-coder"
-            }.get(agent, "")
+            # Collect all traces
+            all_traces = final_state.get("traces", [])
             
-            agent_display = agent.capitalize()
+            # Update logs incrementally for visual effect
+            for i in range(len(all_traces)):
+                display_logs(logs_container, all_traces[:i+1])
+                time.sleep(0.2)  # Small delay for visual streaming effect
             
-            # Expandable trace container
-            expander_label = f"🔷 {agent_display}"
-            if timestamp:
-                expander_label += f" ({timestamp})"
-            with st.expander(
-                expander_label,
-                expanded=st.session_state.trace_expanded.get(trace_id, True)
-            ):
-                st.markdown(
-                    f'<span class="agent-badge {badge_class}">{agent_display}</span>',
-                    unsafe_allow_html=True
-                )
-                if trace.get("thought"):
-                    st.markdown("**💭 Thought:**")
-                    st.info(trace['thought'])
-                
-                if trace.get("act"):
-                    st.markdown("**⚡ Act:**")
-                    st.warning(trace['act'])
-                
-                if trace.get("observation"):
-                    obs = str(trace["observation"])
-                    st.markdown("**👁️ Observation:**")
-                    if len(obs) > 500:
-                        with st.expander("View full observation"):
-                            st.text(obs)
-                        st.text(obs[:500] + "...")
-                    else:
-                        st.text(obs)
-                
-                # Delete trace button
-                if st.button("🗑️ Delete", key=f"delete_trace_{trace_id}", help="Delete this trace"):
-                    # Find and remove the trace
-                    original_idx = len(st.session_state.traces) - trace_id - 1
-                    if 0 <= original_idx < len(st.session_state.traces):
-                        st.session_state.traces.pop(original_idx)
-                    st.rerun()
-        
-        if len(filtered_traces) > 10:
-            st.caption(f"Showing last 10 of {len(filtered_traces)} traces")
-
-# Footer
-st.divider()
-col_foot1, col_foot2 = st.columns([3, 1])
-with col_foot1:
-    st.caption("🔬 Research Assistant - Multi-agent ReAct system")
-with col_foot2:
-    st.caption(f"Model: {st.session_state.selected_model}")
+            # Extract reporter results (final synthesized response)
+            reporter_results = final_state.get("reporter_results")
+            research_results = final_state.get("research_results")
+            coder_results = final_state.get("coder_results")
+            
+            # Build final response from Reporter agent
+            if reporter_results:
+                final_response = reporter_results.get("result", "")
+            else:
+                # Fallback if reporter didn't run (shouldn't happen)
+                final_response = "✅ **Task Complete!**\n\n"
+                if research_results:
+                    research_content = research_results.get("result", "")
+                    if research_content:
+                        final_response += f"**Research Findings:**\n\n{research_content}\n\n"
+                if coder_results:
+                    code_content = coder_results.get("result", "")
+                    if code_content:
+                        final_response += f"**Code Execution:**\n\n{code_content}\n\n"
+            
+            # Update final response in chat
+            ai_placeholder.empty()
+            with chat_container:
+                with st.chat_message("assistant"):
+                    st.markdown(final_response)
+            
+            return final_state
+            
+        except Exception as e:
+            error_msg = f"❌ **Error during execution:**\n\n{str(e)}"
+            ai_placeholder.empty()
+            with chat_container:
+                with st.chat_message("assistant"):
+                    st.error(error_msg)
+            raise
+            
+    except Exception as e:
+        st.error(f"Failed to initialize workflow: {str(e)}")
+        return None
 
 
 def main():
-    """
-    Entry point for the research assistant Streamlit app.
-    This function is called when running via the poetry script entry point.
-    """
-    import subprocess
-    import sys
-    app_path = Path(__file__).resolve()
-    subprocess.run([sys.executable, "-m", "streamlit", "run", str(app_path)])
+    """Main Streamlit application."""
+    # Header
+    st.markdown('<div class="main-header">🔬 Research Assistant</div>', unsafe_allow_html=True)
+    st.markdown("---")
+    
+    # Sidebar for settings
+    with st.sidebar:
+        st.header("⚙️ Settings")
+        
+        # Model selection (for future use)
+        model = st.selectbox(
+            "Model",
+            ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"],
+            index=0,
+            disabled=True  # Currently fixed to gpt-4o
+        )
+        
+        # Options
+        st.subheader("Options")
+        use_drive = st.checkbox("Enable Google Drive", value=False)
+        show_raw_traces = st.checkbox("Show Raw Traces", value=False)
+        
+        st.markdown("---")
+        st.info("💡 **Tip:** Enable Google Drive to search internal documents alongside web research.")
+        
+        # Clear button
+        if st.button("🗑️ Clear Chat", use_container_width=True):
+            st.session_state.messages = []
+            st.session_state.traces = []
+            st.rerun()
+    
+    # Initialize session state
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+    if "traces" not in st.session_state:
+        st.session_state.traces = []
+    
+    # Main layout: Chat on left, Logs on right
+    col1, col2 = st.columns([2, 1], gap="medium")
+    
+    with col1:
+        st.markdown("### 💬 Conversation")
+        chat_container = st.container()
+        
+        # Display chat history
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
+        
+        # Input area
+        user_input = st.chat_input("Enter your research query or task...")
+        
+        if user_input:
+            # Add user message to history
+            st.session_state.messages.append({"role": "user", "content": user_input})
+            
+            # Create logs container in the right column
+            with col2:
+                logs_container = st.container(height=700)
+            
+            # Run workflow with streaming
+            result = run_workflow_streaming(
+                user_input,
+                chat_container,
+                logs_container
+            )
+            
+            if result:
+                # Extract reporter results for chat history
+                reporter_results = result.get("reporter_results")
+                if reporter_results:
+                    response_content = reporter_results.get("result", "")
+                else:
+                    # Fallback
+                    response_content = result.get("plan", "Task completed.")
+                
+                # Add assistant response to history (Reporter output)
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": response_content
+                })
+                st.session_state.traces = result.get("traces", [])
+                st.rerun()
+    
+    with col2:
+        st.markdown("### 📊 Execution Logs")
+        logs_display = st.container(height=700)
+        if st.session_state.traces:
+            display_logs(logs_display, st.session_state.traces)
+        else:
+            logs_display.info("💡 Execution logs will appear here as agents process your query.")
 
 
 if __name__ == "__main__":
-    # When run directly, Streamlit will execute the script
-    pass
+    # Check for required environment variables
+    required_vars = ["OPENAI_API_KEY"]
+    missing_vars = [var for var in required_vars if not os.getenv(var)]
+    
+    if missing_vars:
+        st.error(f"❌ Missing required environment variables: {', '.join(missing_vars)}")
+        st.info("Please set these in your `.env` file. See `env.example` for reference.")
+        st.stop()
+    
+    main()
+
