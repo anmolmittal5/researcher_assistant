@@ -2,6 +2,6 @@
 
 from research_assistant.agents.base import BaseReActAgent
 from research_assistant.agents.planner import PlannerAgent
-from research_assistant.agents.research import ResearchAgent
+from research_assistant.agents.researcher import ResearchAgent
 
 __all__ = ["BaseReActAgent", "PlannerAgent", "ResearchAgent"]

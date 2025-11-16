@@ -33,7 +33,6 @@ class BaseReActAgent:
         
         try:
             tool = self.tool_map[tool_name]
-            # Handle different input types
             if isinstance(tool_input, str):
                 result = tool.invoke(tool_input)
             else:
@@ -76,14 +75,11 @@ After each action, you'll receive an Observation. Continue until you have the an
         all_traces = []
         
         for iteration in range(self.max_iterations):
-            # Get LLM responsee
             response = self.llm.invoke(messages)
             response_text = response.content
             
-            # Parse response
             thought, action, action_input = self._parse_response(response_text)
             
-            # Store trace
             trace = {
                 "iteration": iteration + 1,
                 "thought": thought,
@@ -91,7 +87,6 @@ After each action, you'll receive an Observation. Continue until you have the an
                 "observation": "",
             }
             
-            # Execute action
             observation = ""
             if action and action.lower() != "finish":
                 observation = self._execute_tool(action, action_input)
@@ -108,7 +103,6 @@ After each action, you'll receive an Observation. Continue until you have the an
                     "final_act": "finish",
                 }
             
-            # Add to conversation
             messages.append(AIMessage(content=response_text))
             if observation:
                 messages.append(HumanMessage(content=f"Observation: {observation}"))
@@ -142,7 +136,6 @@ After each action, you'll receive an Observation. Continue until you have the an
             elif line_lower.startswith("action input:"):
                 action_input = line.split(":", 1)[1].strip() if ":" in line else ""
             elif thought and not action:
-                # Continue building thought
                 thought += " " + line.strip()
         
         return thought.strip(), action.strip(), action_input.strip()
