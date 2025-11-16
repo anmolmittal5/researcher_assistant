@@ -8,16 +8,13 @@ from typing import Dict, Any, List
 import streamlit as st
 from dotenv import load_dotenv
 
-# Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from research_assistant.graph import create_workflow, AgentState
 from research_assistant.graph.state import AgentState as StateType
 
-# Load environment variables
 load_dotenv()
 
-# Page configuration
 st.set_page_config(
     page_title="Research Assistant",
     page_icon="🔬",
@@ -25,7 +22,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for better UI
 st.markdown("""
 <style>
     .main-header {
@@ -85,7 +81,7 @@ def format_trace(trace: Dict[str, Any], agent_name: str = "") -> str:
         html += f'<div class="act-text"><strong>⚡ Act:</strong> {trace["act"]}</div>'
     
     if trace.get("observation"):
-        obs = str(trace["observation"])[:500]  # Truncate long observations
+        obs = str(trace["observation"])[:500]
         if len(str(trace["observation"])) > 500:
             obs += "..."
         html += f'<div class="observation-text"><strong>👁️ Observation:</strong> {obs}</div>'
@@ -105,7 +101,6 @@ def display_logs(logs_container, traces: List[Dict[str, Any]], current_agent: st
         st.markdown("*Showing Research and Coder agent traces*")
         st.markdown("---")
         
-        # Filter to show only Research and Coder traces
         filtered_traces = [
             trace for trace in traces 
             if trace.get("agent", "").lower() in ["research", "coder"]
@@ -142,13 +137,11 @@ def run_workflow_streaming(goal: str, chat_container, logs_container):
             "is_complete": False,
         }
         
-        # Create placeholder for AI response
         ai_placeholder = chat_container.empty()
         
         # Stream workflow execution
         all_traces = []
         
-        # Show initial processing message
         with ai_placeholder.chat_message("assistant"):
             response_placeholder = st.empty()
             response_text = "🤔 Processing your request..."
@@ -156,28 +149,21 @@ def run_workflow_streaming(goal: str, chat_container, logs_container):
         
         # Execute workflow with streaming
         try:
-            # Use astream for real-time updates if available
-            # For now, we'll use invoke and update UI incrementally
             final_state = workflow.invoke(initial_state)
             
-            # Collect all traces
             all_traces = final_state.get("traces", [])
             
-            # Update logs incrementally for visual effect
             for i in range(len(all_traces)):
                 display_logs(logs_container, all_traces[:i+1])
-                time.sleep(0.2)  # Small delay for visual streaming effect
+                time.sleep(0.2)
             
-            # Extract reporter results (final synthesized response)
             reporter_results = final_state.get("reporter_results")
             research_results = final_state.get("research_results")
             coder_results = final_state.get("coder_results")
             
-            # Build final response from Reporter agent
             if reporter_results:
                 final_response = reporter_results.get("result", "")
             else:
-                # Fallback if reporter didn't run (shouldn't happen)
                 final_response = "✅ **Task Complete!**\n\n"
                 if research_results:
                     research_content = research_results.get("result", "")
@@ -188,7 +174,6 @@ def run_workflow_streaming(goal: str, chat_container, logs_container):
                     if code_content:
                         final_response += f"**Code Execution:**\n\n{code_content}\n\n"
             
-            # Update final response in chat
             ai_placeholder.empty()
             with chat_container:
                 with st.chat_message("assistant"):
@@ -215,19 +200,16 @@ def main():
     st.markdown('<div class="main-header">🔬 Research Assistant</div>', unsafe_allow_html=True)
     st.markdown("---")
     
-    # Sidebar for settings
     with st.sidebar:
         st.header("⚙️ Settings")
         
-        # Model selection (for future use)
         model = st.selectbox(
             "Model",
-            ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"],
+            ["gpt-4o", "gpt-4.1", "gpt-4.1-nano"],
             index=0,
-            disabled=True  # Currently fixed to gpt-4o
+            disabled=True
         )
         
-        # Options
         st.subheader("Options")
         use_drive = st.checkbox("Enable Google Drive", value=False)
         show_raw_traces = st.checkbox("Show Raw Traces", value=False)
@@ -235,42 +217,35 @@ def main():
         st.markdown("---")
         st.info("💡 **Tip:** Enable Google Drive to search internal documents alongside web research.")
         
-        # Clear button
         if st.button("🗑️ Clear Chat", use_container_width=True):
             st.session_state.messages = []
             st.session_state.traces = []
             st.rerun()
     
-    # Initialize session state
     if "messages" not in st.session_state:
         st.session_state.messages = []
     if "traces" not in st.session_state:
         st.session_state.traces = []
     
-    # Main layout: Chat on left, Logs on right
     col1, col2 = st.columns([2, 1], gap="medium")
     
     with col1:
         st.markdown("### 💬 Conversation")
         chat_container = st.container()
         
-        # Display chat history
         for message in st.session_state.messages:
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
         
-        # Input area
         user_input = st.chat_input("Enter your research query or task...")
         
         if user_input:
-            # Add user message to history
             st.session_state.messages.append({"role": "user", "content": user_input})
             
             # Create logs container in the right column
             with col2:
                 logs_container = st.container(height=700)
             
-            # Run workflow with streaming
             result = run_workflow_streaming(
                 user_input,
                 chat_container,
@@ -278,15 +253,12 @@ def main():
             )
             
             if result:
-                # Extract reporter results for chat history
                 reporter_results = result.get("reporter_results")
                 if reporter_results:
                     response_content = reporter_results.get("result", "")
                 else:
-                    # Fallback
                     response_content = result.get("plan", "Task completed.")
                 
-                # Add assistant response to history (Reporter output)
                 st.session_state.messages.append({
                     "role": "assistant",
                     "content": response_content
@@ -304,7 +276,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # Check for required environment variables
     required_vars = ["OPENAI_API_KEY"]
     missing_vars = [var for var in required_vars if not os.getenv(var)]
     
