@@ -1,0 +1,300 @@
+{
+  "execution_date": "2025-11-16T20:38:00.530548",
+  "test_suites": {
+    "Unit Tests": {
+      "Base Agent": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/unit_tests___base_agent.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 17 items\n\ntests/unit/test_base_agent.py::TestBaseAgentInitialization::test_initialization_with_llm_and_prompt \u001b[32mPASSED\u001b[0m\u001b[33m [  5%]\u001b[0m\ntests/unit/test_base_agent.py::TestBaseAgentInitialization::test_initialization_with_tools \u001b[32mPASSED\u001b[0m\u001b[33m [ 11%]\u001b[0m\ntests/unit/test_base_agent.py::TestBaseAgentInitialization::test_initialization_with_custom_max_iterations \u001b[32mPASSED\u001b[0m\u001b[33m [ 17%]\u001b[0m\ntests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_success \u001b[32mPASSED\u001b[0m\u001b[33m [ 23%]\u001b[0m\ntests/unit/test_base_agen"
+      },
+      "Planner Agent": {
+        "status": "FAILED",
+        "exit_code": 1,
+        "passed": 11,
+        "failed": 2,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/unit_tests___planner_agent.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 12 items\n\ntests/unit/test_planner_agent.py::TestPlannerAgentInitialization::test_initialization_with_default_llm \u001b[32mPASSED\u001b[0m\u001b[33m [  8%]\u001b[0m\ntests/unit/test_planner_agent.py::TestPlannerAgentInitialization::test_initialization_with_custom_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 16%]\u001b[0m\ntests/unit/test_planner_agent.py::TestDecideNextStepMethod::test_decide_next_step_with_empty_history \u001b[32mPASSED\u001b[0m\u001b[33m [ 25%]\u001b[0m\ntests/unit/test_planner_agent.py::TestDecideNextStepMethod::test_decide_next_step_with_conversation_history \u001b[32mPASSED\u001b[0m\u001b["
+      },
+      "Researcher Agent": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/unit_tests___researcher_agent.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 6 items\n\ntests/unit/test_researcher_agent.py::TestResearcherAgentInitialization::test_initialization_with_default_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 16%]\u001b[0m\ntests/unit/test_researcher_agent.py::TestResearcherAgentInitialization::test_initialization_with_custom_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 33%]\u001b[0m\ntests/unit/test_researcher_agent.py::TestResearchMethod::test_research_with_task \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_researcher_agent.py::TestResearchMethod::test_research_with_previous_findings \u001b[32mPASSED\u001b[0m\u001b[33m [ 66%]\u001b[0m\ntests/un"
+      },
+      "Coder Agent": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/unit_tests___coder_agent.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 6 items\n\ntests/unit/test_coder_agent.py::TestCoderAgentInitialization::test_initialization_with_default_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 16%]\u001b[0m\ntests/unit/test_coder_agent.py::TestCoderAgentInitialization::test_initialization_with_custom_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 33%]\u001b[0m\ntests/unit/test_coder_agent.py::TestCodeMethod::test_code_with_task \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_coder_agent.py::TestCodeMethod::test_code_with_previous_code \u001b[32mPASSED\u001b[0m\u001b[33m [ 66%]\u001b[0m\ntests/unit/test_coder_agent.py::TestCodeMethod::test_code_"
+      },
+      "Reporter Agent": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/unit_tests___reporter_agent.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 9 items\n\ntests/unit/test_reporter_agent.py::TestReporterAgentInitialization::test_initialization_with_default_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 11%]\u001b[0m\ntests/unit/test_reporter_agent.py::TestReporterAgentInitialization::test_initialization_with_custom_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 22%]\u001b[0m\ntests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_research_findings_only \u001b[32mPASSED\u001b[0m\u001b[33m [ 33%]\u001b[0m\ntests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_coder_results_only \u001b[32mPASSED\u001b[0m\u001b[33m [ 44"
+      },
+      "Tavily Tool": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/unit_tests___tavily_tool.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 4 items\n\ntests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_success \u001b[32mPASSED\u001b[0m\u001b[33m [ 25%]\u001b[0m\ntests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_missing_api_key \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_with_max_results \u001b[32mPASSED\u001b[0m\u001b[33m [ 75%]\u001b[0m\ntests/unit/test_tavily_tool.py::TestTavilyToolUsage::test_tavily_tool_has_correct_attributes \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m==========="
+      },
+      "Python REPL Tool": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/unit_tests___python_repl_tool.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 2 items\n\ntests/unit/test_repl_tool.py::TestPythonREPLToolInitialization::test_get_python_repl_tool_success \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_repl_tool.py::TestPythonREPLToolInitialization::test_python_repl_tool_has_correct_attributes \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397\n  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/conf"
+      }
+    },
+    "Integration Tests": {
+      "Agent Workflow": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/integration_tests___agent_workflow.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 7 items\n\ntests/integration/test_agent_workflow.py::TestPlannerResearcherWorkflow::test_planner_to_researcher_flow \u001b[32mPASSED\u001b[0m\u001b[33m [ 14%]\u001b[0m\ntests/integration/test_agent_workflow.py::TestPlannerCoderWorkflow::test_planner_to_coder_flow \u001b[32mPASSED\u001b[0m\u001b[33m [ 28%]\u001b[0m\ntests/integration/test_agent_workflow.py::TestFullWorkflow::test_research_to_reporter_flow \u001b[32mPASSED\u001b[0m\u001b[33m [ 42%]\u001b[0m\ntests/integration/test_agent_workflow.py::TestFullWorkflow::test_coder_to_reporter_flow \u001b[32mPASSED\u001b[0m\u001b[33m [ 57%]\u001b[0m\ntests/integration/tes"
+      },
+      "Tool Integration": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/integration_tests___tool_integration.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 5 items\n\ntests/integration/test_tool_integration.py::TestResearcherTavilyIntegration::test_researcher_uses_tavily_tool \u001b[32mPASSED\u001b[0m\u001b[33m [ 20%]\u001b[0m\ntests/integration/test_tool_integration.py::TestResearcherTavilyIntegration::test_tavily_tool_error_handling \u001b[32mPASSED\u001b[0m\u001b[33m [ 40%]\u001b[0m\ntests/integration/test_tool_integration.py::TestCoderREPLIntegration::test_coder_uses_python_repl_tool \u001b[32mPASSED\u001b[0m\u001b[33m [ 60%]\u001b[0m\ntests/integration/test_tool_integration.py::TestCoderREPLIntegration::test_python_repl_tool_result_formatting "
+      },
+      "State Management": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/integration_tests___state_management.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 3 items\n\ntests/integration/test_state_management.py::TestAgentState::test_agent_state_structure \u001b[32mPASSED\u001b[0m\u001b[33m [ 33%]\u001b[0m\ntests/integration/test_state_management.py::TestAgentState::test_agent_state_with_results \u001b[32mPASSED\u001b[0m\u001b[33m [ 66%]\u001b[0m\ntests/integration/test_state_management.py::TestAgentState::test_agent_state_updates \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__i"
+      },
+      "Workflow Orchestration": {
+        "status": "PASSED",
+        "exit_code": 0,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/integration_tests___workflow_orchestration.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 8 items\n\ntests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_workflow_creation \u001b[32mPASSED\u001b[0m\u001b[33m [ 12%]\u001b[0m\ntests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_planner_node_routing_decision \u001b[32mPASSED\u001b[0m\u001b[33m [ 25%]\u001b[0m\ntests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_research_node_execution \u001b[32mPASSED\u001b[0m\u001b[33m [ 37%]\u001b[0m\ntests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_coder_node_execution \u001b[32mPASSED"
+      }
+    },
+    "End-to-End Tests": {
+      "Full Workflow": {
+        "status": "FAILED",
+        "exit_code": 1,
+        "passed": 7,
+        "failed": 2,
+        "skipped": 0,
+        "errors": 0,
+        "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/end_to_end_tests___full_workflow.log",
+        "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 8 items\n\ntests/e2e/test_full_workflow.py::TestCompleteResearchWorkflow::test_research_query_workflow \u001b[32mPASSED\u001b[0m\u001b[33m [ 12%]\u001b[0m\ntests/e2e/test_full_workflow.py::TestCompleteCodeWorkflow::test_code_query_workflow \u001b[32mPASSED\u001b[0m\u001b[33m [ 25%]\u001b[0m\ntests/e2e/test_full_workflow.py::TestCompleteCombinedWorkflow::test_research_and_code_workflow \u001b[32mPASSED\u001b[0m\u001b[33m [ 37%]\u001b[0m\ntests/e2e/test_full_workflow.py::TestErrorRecovery::test_research_error_recovery \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/e2e/test_full_workflow.py::TestMaxIteratio"
+      }
+    }
+  },
+  "individual_tests": {
+    "Base Agent - Initialization": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/base_agent___initialization.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 3 items\n\ntests/unit/test_base_agent.py::TestBaseAgentInitialization::test_initialization_with_llm_and_prompt \u001b[32mPASSED\u001b[0m\u001b[33m [ 33%]\u001b[0m\ntests/unit/test_base_agent.py::TestBaseAgentInitialization::test_initialization_with_tools \u001b[32mPASSED\u001b[0m\u001b[33m [ 66%]\u001b[0m\ntests/unit/test_base_agent.py::TestBaseAgentInitialization::test_initialization_with_custom_max_iterations \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3"
+    },
+    "Base Agent - Tool Execution": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/base_agent___tool_execution.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 5 items\n\ntests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_success \u001b[32mPASSED\u001b[0m\u001b[33m [ 20%]\u001b[0m\ntests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_not_found \u001b[32mPASSED\u001b[0m\u001b[33m [ 40%]\u001b[0m\ntests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_with_string_result \u001b[32mPASSED\u001b[0m\u001b[33m [ 60%]\u001b[0m\ntests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_with_list_result \u001b[32mPASSED\u001b[0m\u001b[33m [ 80%]\u001b[0m\ntests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_error_"
+    },
+    "Base Agent - Response Parsing": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/base_agent___response_parsing.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 4 items\n\ntests/unit/test_base_agent.py::TestResponseParsing::test_parse_standard_response \u001b[32mPASSED\u001b[0m\u001b[33m [ 25%]\u001b[0m\ntests/unit/test_base_agent.py::TestResponseParsing::test_parse_response_with_action_input_separate \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_base_agent.py::TestResponseParsing::test_parse_response_with_multiline_thought \u001b[32mPASSED\u001b[0m\u001b[33m [ 75%]\u001b[0m\ntests/unit/test_base_agent.py::TestResponseParsing::test_parse_response_missing_fields \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== "
+    },
+    "Base Agent - ReAct Loop": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/base_agent___react_loop.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 5 items\n\ntests/unit/test_base_agent.py::TestReActLoop::test_react_loop_complete_cycle \u001b[32mPASSED\u001b[0m\u001b[33m [ 20%]\u001b[0m\ntests/unit/test_base_agent.py::TestReActLoop::test_react_loop_with_observations \u001b[32mPASSED\u001b[0m\u001b[33m [ 40%]\u001b[0m\ntests/unit/test_base_agent.py::TestReActLoop::test_react_loop_max_iterations \u001b[32mPASSED\u001b[0m\u001b[33m [ 60%]\u001b[0m\ntests/unit/test_base_agent.py::TestReActLoop::test_react_loop_early_finish \u001b[32mPASSED\u001b[0m\u001b[33m [ 80%]\u001b[0m\ntests/unit/test_base_agent.py::TestReActLoop::test_react_loop_context_handling \u001b[32mPASSED\u001b"
+    },
+    "Planner Agent - Initialization": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/planner_agent___initialization.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 2 items\n\ntests/unit/test_planner_agent.py::TestPlannerAgentInitialization::test_initialization_with_default_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_planner_agent.py::TestPlannerAgentInitialization::test_initialization_with_custom_llm \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397\n  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/config"
+    },
+    "Planner Agent - Plan Method": {
+      "status": "FAILED",
+      "exit_code": 4,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 1,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/planner_agent___plan_method.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 0 items\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397\n  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397: PytestConfigWarning: Unknown config option: asyncio_mode\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\ntests/unit/test_planner_agent.py:10\n  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/p"
+    },
+    "Planner Agent - Routing Logic": {
+      "status": "FAILED",
+      "exit_code": 1,
+      "passed": 6,
+      "failed": 2,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/planner_agent___routing_logic.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 7 items\n\ntests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_research_with_research_keyword \u001b[32mPASSED\u001b[0m\u001b[33m [ 14%]\u001b[0m\ntests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_research_with_question_words \u001b[32mPASSED\u001b[0m\u001b[33m [ 28%]\u001b[0m\ntests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_research_negative_cases \u001b[31mFAILED\u001b[0m\u001b[31m [ 42%]\u001b[0m\ntests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_coder_with_code_keyword \u001b[32mPASSED\u001b[0m\u001b[31m [ 57%]\u001b[0m\n"
+    },
+    "Researcher Agent - Initialization": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/researcher_agent___initialization.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 2 items\n\ntests/unit/test_researcher_agent.py::TestResearcherAgentInitialization::test_initialization_with_default_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_researcher_agent.py::TestResearcherAgentInitialization::test_initialization_with_custom_llm \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397\n  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_p"
+    },
+    "Researcher Agent - Research Method": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/researcher_agent___research_method.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 4 items\n\ntests/unit/test_researcher_agent.py::TestResearchMethod::test_research_with_task \u001b[32mPASSED\u001b[0m\u001b[33m [ 25%]\u001b[0m\ntests/unit/test_researcher_agent.py::TestResearchMethod::test_research_with_previous_findings \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_researcher_agent.py::TestResearchMethod::test_research_with_empty_previous_findings \u001b[32mPASSED\u001b[0m\u001b[33m [ 75%]\u001b[0m\ntests/unit/test_researcher_agent.py::TestResearchMethod::test_research_tool_integration \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m==============================="
+    },
+    "Coder Agent - Initialization": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/coder_agent___initialization.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 2 items\n\ntests/unit/test_coder_agent.py::TestCoderAgentInitialization::test_initialization_with_default_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_coder_agent.py::TestCoderAgentInitialization::test_initialization_with_custom_llm \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397\n  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/config/__init_"
+    },
+    "Coder Agent - Code Method": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/coder_agent___code_method.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 4 items\n\ntests/unit/test_coder_agent.py::TestCodeMethod::test_code_with_task \u001b[32mPASSED\u001b[0m\u001b[33m [ 25%]\u001b[0m\ntests/unit/test_coder_agent.py::TestCodeMethod::test_code_with_previous_code \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_coder_agent.py::TestCodeMethod::test_code_with_empty_previous_code \u001b[32mPASSED\u001b[0m\u001b[33m [ 75%]\u001b[0m\ntests/unit/test_coder_agent.py::TestCodeMethod::test_code_tool_integration \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../"
+    },
+    "Reporter Agent - Initialization": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/reporter_agent___initialization.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 2 items\n\ntests/unit/test_reporter_agent.py::TestReporterAgentInitialization::test_initialization_with_default_llm \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_reporter_agent.py::TestReporterAgentInitialization::test_initialization_with_custom_llm \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397\n  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/co"
+    },
+    "Reporter Agent - Synthesize Method": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/reporter_agent___synthesize_method.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 7 items\n\ntests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_research_findings_only \u001b[32mPASSED\u001b[0m\u001b[33m [ 14%]\u001b[0m\ntests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_coder_results_only \u001b[32mPASSED\u001b[0m\u001b[33m [ 28%]\u001b[0m\ntests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_both_results \u001b[32mPASSED\u001b[0m\u001b[33m [ 42%]\u001b[0m\ntests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_no_results \u001b[32mPASSED\u001b[0m\u001b[33m [ 57%]\u001b[0m\ntests/unit/test_report"
+    },
+    "Tavily Tool - Initialization": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/tavily_tool___initialization.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 3 items\n\ntests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_success \u001b[32mPASSED\u001b[0m\u001b[33m [ 33%]\u001b[0m\ntests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_missing_api_key \u001b[32mPASSED\u001b[0m\u001b[33m [ 66%]\u001b[0m\ntests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_with_max_results \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3.10/site"
+    },
+    "Python REPL Tool - Initialization": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/python_repl_tool___initialization.log",
+      "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 2 items\n\ntests/unit/test_repl_tool.py::TestPythonREPLToolInitialization::test_get_python_repl_tool_success \u001b[32mPASSED\u001b[0m\u001b[33m [ 50%]\u001b[0m\ntests/unit/test_repl_tool.py::TestPythonREPLToolInitialization::test_python_repl_tool_has_correct_attributes \u001b[32mPASSED\u001b[0m\u001b[33m [100%]\u001b[0m\n\n\u001b[33m=============================== warnings summary ===============================\u001b[0m\n../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397\n  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/conf"
+    }
+  },
+  "summary": {
+    "total_tests": 12,
+    "passed": 85,
+    "failed": 4,
+    "skipped": 0,
+    "errors": 0
+  },
+  "final_test": {
+    "status": "FAILED",
+    "exit_code": 1,
+    "passed": 85,
+    "failed": 4,
+    "skipped": 0,
+    "errors": 0,
+    "log_file": "/Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/results/final_comprehensive_test___all_tests.log",
+    "output": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python\ncachedir: .pytest_cache\nrootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant\nconfigfile: pyproject.toml\nplugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0\n\u001b[1mcollecting ... \u001b[0mcollected 87 items\n\ntests/e2e/test_full_workflow.py::TestCompleteResearchWorkflow::test_research_query_workflow \u001b[32mPASSED\u001b[0m\u001b[33m [  1%]\u001b[0m\ntests/e2e/test_full_workflow.py::TestCompleteCodeWorkflow::test_code_query_workflow \u001b[32mPASSED\u001b[0m\u001b[33m [  2%]\u001b[0m\ntests/e2e/test_full_workflow.py::TestCompleteCombinedWorkflow::test_research_and_code_workflow \u001b[32mPASSED\u001b[0m\u001b[33m [  3%]\u001b[0m\ntests/e2e/test_full_workflow.py::TestErrorRecovery::test_research_error_recovery \u001b[32mPASSED\u001b[0m\u001b[33m [  4%]\u001b[0m\ntests/e2e/test_full_workflow.py::TestMaxIterati"
+  }
+}

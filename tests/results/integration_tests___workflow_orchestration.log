@@ -1,0 +1,76 @@
+Test: Integration Tests - Workflow Orchestration
+Path: tests/integration/test_workflow_orchestration.py
+Category: Integration Tests
+Execution Time: 2025-11-16T20:38:16.092505
+================================================================================
+
+STDOUT:
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant
+configfile: pyproject.toml
+plugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0
+[1mcollecting ... [0mcollected 8 items
+
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_workflow_creation [32mPASSED[0m[33m [ 12%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_planner_node_routing_decision [32mPASSED[0m[33m [ 25%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_research_node_execution [32mPASSED[0m[33m [ 37%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_coder_node_execution [32mPASSED[0m[33m [ 50%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_reporter_node_execution [32mPASSED[0m[33m [ 62%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_route_after_planner [32mPASSED[0m[33m [ 75%][0m
+tests/integration/test_workflow_orchestration.py::TestLoopBasedRouting::test_planner_to_researcher_loop [32mPASSED[0m[33m [ 87%][0m
+tests/integration/test_workflow_orchestration.py::TestLoopBasedRouting::test_conversation_history_accumulation [32mPASSED[0m[33m [100%][0m
+
+[33m=============================== warnings summary ===============================[0m
+../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397
+  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/integration/test_workflow_orchestration.py:12
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_workflow_orchestration.py:12: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_workflow_orchestration.py:206
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_workflow_orchestration.py:206: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_workflow_creation
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/src/research_assistant/tools/tavily.py:13: LangChainDeprecationWarning: The class `TavilySearchResults` was deprecated in LangChain 0.3.25 and will be removed in 1.0. An updated version of the class exists in the `langchain-tavily package and should be used instead. To use it run `pip install -U `langchain-tavily` and import as `from `langchain_tavily import TavilySearch``.
+    return TavilySearchResults(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.12-final-0 _______________
+
+Name                                          Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------
+src/research_assistant/__init__.py                1      0   100%
+src/research_assistant/agents/__init__.py         4      0   100%
+src/research_assistant/agents/base.py            77     61    21%   31-49, 53-116, 124-148
+src/research_assistant/agents/coder.py           13      3    77%   16, 26-30
+src/research_assistant/agents/planner.py        148    121    18%   44, 52-55, 87-168, 194-244, 256-316, 329-397, 409, 418-419, 428-429
+src/research_assistant/agents/reporter.py        23     13    43%   16, 31-55
+src/research_assistant/agents/researcher.py      14      3    79%   16, 28-32
+src/research_assistant/graph/__init__.py          3      0   100%
+src/research_assistant/graph/state.py            14      0   100%
+src/research_assistant/graph/workflow.py        106      4    96%   21, 29, 54, 277
+src/research_assistant/prompts/__init__.py        5      0   100%
+src/research_assistant/prompts/coder.py           1      0   100%
+src/research_assistant/prompts/planner.py         1      0   100%
+src/research_assistant/prompts/reporter.py        1      0   100%
+src/research_assistant/prompts/research.py        1      0   100%
+src/research_assistant/tools/__init__.py          3      0   100%
+src/research_assistant/tools/repl.py              3      0   100%
+src/research_assistant/tools/tavily.py            7      1    86%   11
+---------------------------------------------------------------------------
+TOTAL                                           425    206    52%
+Coverage HTML written to dir htmlcov
+[33m======================== [32m8 passed[0m, [33m[1m4 warnings[0m[33m in 0.35s[0m[33m =========================[0m
+
+
+STDERR:
+
+
+Exit Code: 0

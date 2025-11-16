@@ -1,0 +1,68 @@
+Test: Unit Tests - Tavily Tool
+Path: tests/unit/test_tavily_tool.py
+Category: Unit Tests
+Execution Time: 2025-11-16T20:38:09.372138
+================================================================================
+
+STDOUT:
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant
+configfile: pyproject.toml
+plugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0
+[1mcollecting ... [0mcollected 4 items
+
+tests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_success [32mPASSED[0m[33m [ 25%][0m
+tests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_missing_api_key [32mPASSED[0m[33m [ 50%][0m
+tests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_with_max_results [32mPASSED[0m[33m [ 75%][0m
+tests/unit/test_tavily_tool.py::TestTavilyToolUsage::test_tavily_tool_has_correct_attributes [32mPASSED[0m[33m [100%][0m
+
+[33m=============================== warnings summary ===============================[0m
+../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397
+  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/unit/test_tavily_tool.py:9
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_tavily_tool.py:9: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_tavily_tool.py:48
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_tavily_tool.py:48: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.12-final-0 _______________
+
+Name                                          Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------
+src/research_assistant/__init__.py                1      0   100%
+src/research_assistant/agents/__init__.py         4      4     0%   3-7
+src/research_assistant/agents/base.py            77     77     0%   3-148
+src/research_assistant/agents/coder.py           13     13     0%   3-30
+src/research_assistant/agents/planner.py        148    148     0%   3-429
+src/research_assistant/agents/reporter.py        23     23     0%   3-55
+src/research_assistant/agents/researcher.py      14     14     0%   3-32
+src/research_assistant/graph/__init__.py          3      3     0%   3-6
+src/research_assistant/graph/state.py            14     14     0%   3-20
+src/research_assistant/graph/workflow.py        106    106     0%   3-279
+src/research_assistant/prompts/__init__.py        5      5     0%   3-8
+src/research_assistant/prompts/coder.py           1      1     0%   3
+src/research_assistant/prompts/planner.py         1      1     0%   3
+src/research_assistant/prompts/reporter.py        1      1     0%   3
+src/research_assistant/prompts/research.py        1      1     0%   3
+src/research_assistant/tools/__init__.py          3      0   100%
+src/research_assistant/tools/repl.py              3      1    67%   8
+src/research_assistant/tools/tavily.py            7      0   100%
+---------------------------------------------------------------------------
+TOTAL                                           425    412     3%
+Coverage HTML written to dir htmlcov
+[33m======================== [32m4 passed[0m, [33m[1m3 warnings[0m[33m in 0.26s[0m[33m =========================[0m
+
+
+STDERR:
+
+
+Exit Code: 0

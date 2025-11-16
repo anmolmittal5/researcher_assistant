@@ -1,0 +1,79 @@
+Test: Integration Tests - Agent Workflow
+Path: tests/integration/test_agent_workflow.py
+Category: Integration Tests
+Execution Time: 2025-11-16T20:38:11.981937
+================================================================================
+
+STDOUT:
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant
+configfile: pyproject.toml
+plugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0
+[1mcollecting ... [0mcollected 7 items
+
+tests/integration/test_agent_workflow.py::TestPlannerResearcherWorkflow::test_planner_to_researcher_flow [32mPASSED[0m[33m [ 14%][0m
+tests/integration/test_agent_workflow.py::TestPlannerCoderWorkflow::test_planner_to_coder_flow [32mPASSED[0m[33m [ 28%][0m
+tests/integration/test_agent_workflow.py::TestFullWorkflow::test_research_to_reporter_flow [32mPASSED[0m[33m [ 42%][0m
+tests/integration/test_agent_workflow.py::TestFullWorkflow::test_coder_to_reporter_flow [32mPASSED[0m[33m [ 57%][0m
+tests/integration/test_agent_workflow.py::TestFullWorkflow::test_full_research_and_code_workflow [32mPASSED[0m[33m [ 71%][0m
+tests/integration/test_agent_workflow.py::TestStateManagement::test_state_passing_between_agents [32mPASSED[0m[33m [ 85%][0m
+tests/integration/test_agent_workflow.py::TestStateManagement::test_trace_accumulation [32mPASSED[0m[33m [100%][0m
+
+[33m=============================== warnings summary ===============================[0m
+../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397
+  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/integration/test_agent_workflow.py:11
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_agent_workflow.py:11: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_agent_workflow.py:49
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_agent_workflow.py:49: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_agent_workflow.py:87
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_agent_workflow.py:87: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_agent_workflow.py:186
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_agent_workflow.py:186: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.12-final-0 _______________
+
+Name                                          Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------
+src/research_assistant/__init__.py                1      0   100%
+src/research_assistant/agents/__init__.py         4      0   100%
+src/research_assistant/agents/base.py            77     27    65%   31-49, 97-98, 112-116, 137-139, 142-146
+src/research_assistant/agents/coder.py           13      1    92%   16
+src/research_assistant/agents/planner.py        148     70    53%   44, 52-55, 88, 155-163, 166-168, 202-210, 217-224, 231-238, 270-288, 294, 299, 304, 309, 329-397, 409, 418-419, 428-429
+src/research_assistant/agents/reporter.py        23      1    96%   16
+src/research_assistant/agents/researcher.py      14      1    93%   16
+src/research_assistant/graph/__init__.py          3      3     0%   3-6
+src/research_assistant/graph/state.py            14     14     0%   3-20
+src/research_assistant/graph/workflow.py        106    106     0%   3-279
+src/research_assistant/prompts/__init__.py        5      0   100%
+src/research_assistant/prompts/coder.py           1      0   100%
+src/research_assistant/prompts/planner.py         1      0   100%
+src/research_assistant/prompts/reporter.py        1      0   100%
+src/research_assistant/prompts/research.py        1      0   100%
+src/research_assistant/tools/__init__.py          3      0   100%
+src/research_assistant/tools/repl.py              3      1    67%   8
+src/research_assistant/tools/tavily.py            7      4    43%   9-13
+---------------------------------------------------------------------------
+TOTAL                                           425    228    46%
+Coverage HTML written to dir htmlcov
+[33m======================== [32m7 passed[0m, [33m[1m5 warnings[0m[33m in 0.30s[0m[33m =========================[0m
+
+
+STDERR:
+
+
+Exit Code: 0

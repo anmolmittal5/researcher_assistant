@@ -1,0 +1,291 @@
+Test: Final Comprehensive Test - All Tests
+Path: tests/
+Category: Final
+Execution Time: 2025-11-16T20:38:39.496456
+================================================================================
+
+STDOUT:
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant
+configfile: pyproject.toml
+plugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0
+[1mcollecting ... [0mcollected 87 items
+
+tests/e2e/test_full_workflow.py::TestCompleteResearchWorkflow::test_research_query_workflow [32mPASSED[0m[33m [  1%][0m
+tests/e2e/test_full_workflow.py::TestCompleteCodeWorkflow::test_code_query_workflow [32mPASSED[0m[33m [  2%][0m
+tests/e2e/test_full_workflow.py::TestCompleteCombinedWorkflow::test_research_and_code_workflow [32mPASSED[0m[33m [  3%][0m
+tests/e2e/test_full_workflow.py::TestErrorRecovery::test_research_error_recovery [32mPASSED[0m[33m [  4%][0m
+tests/e2e/test_full_workflow.py::TestMaxIterationsHandling::test_max_iterations_reached [31mFAILED[0m[31m [  5%][0m
+tests/e2e/test_full_workflow.py::TestLangGraphWorkflow::test_full_workflow_research_only [32mPASSED[0m[31m [  6%][0m
+tests/e2e/test_full_workflow.py::TestLangGraphWorkflow::test_full_workflow_with_code [32mPASSED[0m[31m [  8%][0m
+tests/e2e/test_full_workflow.py::TestLangGraphWorkflow::test_workflow_state_persistence [32mPASSED[0m[31m [  9%][0m
+tests/integration/test_agent_workflow.py::TestPlannerResearcherWorkflow::test_planner_to_researcher_flow [32mPASSED[0m[31m [ 10%][0m
+tests/integration/test_agent_workflow.py::TestPlannerCoderWorkflow::test_planner_to_coder_flow [32mPASSED[0m[31m [ 11%][0m
+tests/integration/test_agent_workflow.py::TestFullWorkflow::test_research_to_reporter_flow [32mPASSED[0m[31m [ 12%][0m
+tests/integration/test_agent_workflow.py::TestFullWorkflow::test_coder_to_reporter_flow [32mPASSED[0m[31m [ 13%][0m
+tests/integration/test_agent_workflow.py::TestFullWorkflow::test_full_research_and_code_workflow [32mPASSED[0m[31m [ 14%][0m
+tests/integration/test_agent_workflow.py::TestStateManagement::test_state_passing_between_agents [32mPASSED[0m[31m [ 16%][0m
+tests/integration/test_agent_workflow.py::TestStateManagement::test_trace_accumulation [32mPASSED[0m[31m [ 17%][0m
+tests/integration/test_state_management.py::TestAgentState::test_agent_state_structure [32mPASSED[0m[31m [ 18%][0m
+tests/integration/test_state_management.py::TestAgentState::test_agent_state_with_results [32mPASSED[0m[31m [ 19%][0m
+tests/integration/test_state_management.py::TestAgentState::test_agent_state_updates [32mPASSED[0m[31m [ 20%][0m
+tests/integration/test_tool_integration.py::TestResearcherTavilyIntegration::test_researcher_uses_tavily_tool [32mPASSED[0m[31m [ 21%][0m
+tests/integration/test_tool_integration.py::TestResearcherTavilyIntegration::test_tavily_tool_error_handling [32mPASSED[0m[31m [ 22%][0m
+tests/integration/test_tool_integration.py::TestCoderREPLIntegration::test_coder_uses_python_repl_tool [32mPASSED[0m[31m [ 24%][0m
+tests/integration/test_tool_integration.py::TestCoderREPLIntegration::test_python_repl_tool_result_formatting [32mPASSED[0m[31m [ 25%][0m
+tests/integration/test_tool_integration.py::TestToolResultPropagation::test_tool_result_in_observation [32mPASSED[0m[31m [ 26%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_workflow_creation [32mPASSED[0m[31m [ 27%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_planner_node_routing_decision [32mPASSED[0m[31m [ 28%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_research_node_execution [32mPASSED[0m[31m [ 29%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_coder_node_execution [32mPASSED[0m[31m [ 31%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_reporter_node_execution [32mPASSED[0m[31m [ 32%][0m
+tests/integration/test_workflow_orchestration.py::TestWorkflowOrchestration::test_route_after_planner [32mPASSED[0m[31m [ 33%][0m
+tests/integration/test_workflow_orchestration.py::TestLoopBasedRouting::test_planner_to_researcher_loop [32mPASSED[0m[31m [ 34%][0m
+tests/integration/test_workflow_orchestration.py::TestLoopBasedRouting::test_conversation_history_accumulation [32mPASSED[0m[31m [ 35%][0m
+tests/unit/test_base_agent.py::TestBaseAgentInitialization::test_initialization_with_llm_and_prompt [32mPASSED[0m[31m [ 36%][0m
+tests/unit/test_base_agent.py::TestBaseAgentInitialization::test_initialization_with_tools [32mPASSED[0m[31m [ 37%][0m
+tests/unit/test_base_agent.py::TestBaseAgentInitialization::test_initialization_with_custom_max_iterations [32mPASSED[0m[31m [ 39%][0m
+tests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_success [32mPASSED[0m[31m [ 40%][0m
+tests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_not_found [32mPASSED[0m[31m [ 41%][0m
+tests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_with_string_result [32mPASSED[0m[31m [ 42%][0m
+tests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_with_list_result [32mPASSED[0m[31m [ 43%][0m
+tests/unit/test_base_agent.py::TestToolExecution::test_execute_tool_error_handling [32mPASSED[0m[31m [ 44%][0m
+tests/unit/test_base_agent.py::TestResponseParsing::test_parse_standard_response [32mPASSED[0m[31m [ 45%][0m
+tests/unit/test_base_agent.py::TestResponseParsing::test_parse_response_with_action_input_separate [32mPASSED[0m[31m [ 47%][0m
+tests/unit/test_base_agent.py::TestResponseParsing::test_parse_response_with_multiline_thought [32mPASSED[0m[31m [ 48%][0m
+tests/unit/test_base_agent.py::TestResponseParsing::test_parse_response_missing_fields [32mPASSED[0m[31m [ 49%][0m
+tests/unit/test_base_agent.py::TestReActLoop::test_react_loop_complete_cycle [32mPASSED[0m[31m [ 50%][0m
+tests/unit/test_base_agent.py::TestReActLoop::test_react_loop_with_observations [32mPASSED[0m[31m [ 51%][0m
+tests/unit/test_base_agent.py::TestReActLoop::test_react_loop_max_iterations [32mPASSED[0m[31m [ 52%][0m
+tests/unit/test_base_agent.py::TestReActLoop::test_react_loop_early_finish [32mPASSED[0m[31m [ 54%][0m
+tests/unit/test_base_agent.py::TestReActLoop::test_react_loop_context_handling [32mPASSED[0m[31m [ 55%][0m
+tests/unit/test_coder_agent.py::TestCoderAgentInitialization::test_initialization_with_default_llm [32mPASSED[0m[31m [ 56%][0m
+tests/unit/test_coder_agent.py::TestCoderAgentInitialization::test_initialization_with_custom_llm [32mPASSED[0m[31m [ 57%][0m
+tests/unit/test_coder_agent.py::TestCodeMethod::test_code_with_task [32mPASSED[0m[31m [ 58%][0m
+tests/unit/test_coder_agent.py::TestCodeMethod::test_code_with_previous_code [32mPASSED[0m[31m [ 59%][0m
+tests/unit/test_coder_agent.py::TestCodeMethod::test_code_with_empty_previous_code [32mPASSED[0m[31m [ 60%][0m
+tests/unit/test_coder_agent.py::TestCodeMethod::test_code_tool_integration [32mPASSED[0m[31m [ 62%][0m
+tests/unit/test_planner_agent.py::TestPlannerAgentInitialization::test_initialization_with_default_llm [32mPASSED[0m[31m [ 63%][0m
+tests/unit/test_planner_agent.py::TestPlannerAgentInitialization::test_initialization_with_custom_llm [32mPASSED[0m[31m [ 64%][0m
+tests/unit/test_planner_agent.py::TestDecideNextStepMethod::test_decide_next_step_with_empty_history [32mPASSED[0m[31m [ 65%][0m
+tests/unit/test_planner_agent.py::TestDecideNextStepMethod::test_decide_next_step_with_conversation_history [32mPASSED[0m[31m [ 66%][0m
+tests/unit/test_planner_agent.py::TestDecideNextStepMethod::test_decide_next_step_with_empty_question [32mPASSED[0m[31m [ 67%][0m
+tests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_research_with_research_keyword [32mPASSED[0m[31m [ 68%][0m
+tests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_research_with_question_words [32mPASSED[0m[31m [ 70%][0m
+tests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_research_negative_cases [31mFAILED[0m[31m [ 71%][0m
+tests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_coder_with_code_keyword [32mPASSED[0m[31m [ 72%][0m
+tests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_coder_negative_cases [32mPASSED[0m[31m [ 73%][0m
+tests/unit/test_planner_agent.py::TestRoutingLogic::test_should_route_to_coder_case_insensitive [32mPASSED[0m[31m [ 74%][0m
+tests/unit/test_planner_agent.py::TestRoutingLogic::test_routing_with_combined_keywords [32mPASSED[0m[31m [ 75%][0m
+tests/unit/test_repl_tool.py::TestPythonREPLToolInitialization::test_get_python_repl_tool_success [32mPASSED[0m[31m [ 77%][0m
+tests/unit/test_repl_tool.py::TestPythonREPLToolInitialization::test_python_repl_tool_has_correct_attributes [32mPASSED[0m[31m [ 78%][0m
+tests/unit/test_reporter_agent.py::TestReporterAgentInitialization::test_initialization_with_default_llm [32mPASSED[0m[31m [ 79%][0m
+tests/unit/test_reporter_agent.py::TestReporterAgentInitialization::test_initialization_with_custom_llm [32mPASSED[0m[31m [ 80%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_research_findings_only [32mPASSED[0m[31m [ 81%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_coder_results_only [32mPASSED[0m[31m [ 82%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_both_results [32mPASSED[0m[31m [ 83%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_no_results [32mPASSED[0m[31m [ 85%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_trace_generation [32mPASSED[0m[31m [ 86%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_empty_research_result [32mPASSED[0m[31m [ 87%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_empty_coder_result [32mPASSED[0m[31m [ 88%][0m
+tests/unit/test_researcher_agent.py::TestResearcherAgentInitialization::test_initialization_with_default_llm [32mPASSED[0m[31m [ 89%][0m
+tests/unit/test_researcher_agent.py::TestResearcherAgentInitialization::test_initialization_with_custom_llm [32mPASSED[0m[31m [ 90%][0m
+tests/unit/test_researcher_agent.py::TestResearchMethod::test_research_with_task [32mPASSED[0m[31m [ 91%][0m
+tests/unit/test_researcher_agent.py::TestResearchMethod::test_research_with_previous_findings [32mPASSED[0m[31m [ 93%][0m
+tests/unit/test_researcher_agent.py::TestResearchMethod::test_research_with_empty_previous_findings [32mPASSED[0m[31m [ 94%][0m
+tests/unit/test_researcher_agent.py::TestResearchMethod::test_research_tool_integration [32mPASSED[0m[31m [ 95%][0m
+tests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_success [32mPASSED[0m[31m [ 96%][0m
+tests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_missing_api_key [32mPASSED[0m[31m [ 97%][0m
+tests/unit/test_tavily_tool.py::TestTavilyToolInitialization::test_get_tavily_tool_with_max_results [32mPASSED[0m[31m [ 98%][0m
+tests/unit/test_tavily_tool.py::TestTavilyToolUsage::test_tavily_tool_has_correct_attributes [32mPASSED[0m[31m [100%][0m
+
+=================================== FAILURES ===================================
+[31m[1m____________ TestMaxIterationsHandling.test_max_iterations_reached _____________[0m
+[1m[31mtests/e2e/test_full_workflow.py[0m:225: in test_max_iterations_reached
+    [0mnever_finish_llm.invoke.return_value = never_finish_response[90m[39;49;00m
+[1m[31m/Users/anmolmittal/miniforge3/lib/python3.10/unittest/mock.py[0m:643: in __getattr__
+    [0m[94mraise[39;49;00m [96mAttributeError[39;49;00m([33m"[39;49;00m[33mMock object has no attribute [39;49;00m[33m%r[39;49;00m[33m"[39;49;00m % name)[90m[39;49;00m
+[1m[31mE   AttributeError: Mock object has no attribute 'invoke'[0m
+[31m[1m________ TestRoutingLogic.test_should_route_to_research_negative_cases _________[0m
+[1m[31mtests/unit/test_planner_agent.py[0m:165: in test_should_route_to_research_negative_cases
+    [0m[94massert[39;49;00m agent.should_route_to_research([33m"[39;49;00m[33mCalculate fibonacci[39;49;00m[33m"[39;49;00m) [95mis[39;49;00m [94mFalse[39;49;00m[90m[39;49;00m
+[1m[31mE   AssertionError: assert True is False[0m
+[1m[31mE    +  where True = should_route_to_research('Calculate fibonacci')[0m
+[1m[31mE    +    where should_route_to_research = <research_assistant.agents.planner.PlannerAgent object at 0x107aaf220>.should_route_to_research[0m
+[33m=============================== warnings summary ===============================[0m
+../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397
+  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/e2e/test_full_workflow.py:14
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:14: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:67
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:67: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:119
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:119: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:183
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:183: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:214
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:214: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:242
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:242: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/integration/test_agent_workflow.py:11
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_agent_workflow.py:11: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_agent_workflow.py:49
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_agent_workflow.py:49: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_agent_workflow.py:87
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_agent_workflow.py:87: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_agent_workflow.py:186
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_agent_workflow.py:186: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_state_management.py:7
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_state_management.py:7: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_tool_integration.py:9
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_tool_integration.py:9: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_tool_integration.py:62
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_tool_integration.py:62: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_tool_integration.py:113
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_tool_integration.py:113: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_workflow_orchestration.py:12
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_workflow_orchestration.py:12: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/integration/test_workflow_orchestration.py:206
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/integration/test_workflow_orchestration.py:206: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/unit/test_base_agent.py:10
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_base_agent.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_base_agent.py:53
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_base_agent.py:53: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_base_agent.py:128
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_base_agent.py:128: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_base_agent.py:204
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_base_agent.py:204: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_coder_agent.py:9
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_coder_agent.py:9: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_coder_agent.py:33
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_coder_agent.py:33: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_planner_agent.py:10
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_planner_agent.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_planner_agent.py:30
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_planner_agent.py:30: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_planner_agent.py:92
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_planner_agent.py:92: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_repl_tool.py:8
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_repl_tool.py:8: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_reporter_agent.py:9
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_reporter_agent.py:9: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_reporter_agent.py:29
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_reporter_agent.py:29: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_researcher_agent.py:9
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_researcher_agent.py:9: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_researcher_agent.py:33
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_researcher_agent.py:33: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_tavily_tool.py:9
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_tavily_tool.py:9: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_tavily_tool.py:48
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_tavily_tool.py:48: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/e2e/test_full_workflow.py::TestLangGraphWorkflow::test_workflow_state_persistence
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/src/research_assistant/tools/tavily.py:13: LangChainDeprecationWarning: The class `TavilySearchResults` was deprecated in LangChain 0.3.25 and will be removed in 1.0. An updated version of the class exists in the `langchain-tavily package and should be used instead. To use it run `pip install -U `langchain-tavily` and import as `from `langchain_tavily import TavilySearch``.
+    return TavilySearchResults(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.12-final-0 _______________
+
+Name                                          Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------
+src/research_assistant/__init__.py                1      0   100%
+src/research_assistant/agents/__init__.py         4      0   100%
+src/research_assistant/agents/base.py            77      5    94%   40, 47, 137-139
+src/research_assistant/agents/coder.py           13      0   100%
+src/research_assistant/agents/planner.py        148     59    60%   52-55, 155-163, 166-168, 202-210, 217-224, 231-238, 277-288, 294, 304, 309, 329-397, 409
+src/research_assistant/agents/reporter.py        23      0   100%
+src/research_assistant/agents/researcher.py      14      0   100%
+src/research_assistant/graph/__init__.py          3      0   100%
+src/research_assistant/graph/state.py            14      0   100%
+src/research_assistant/graph/workflow.py        106      4    96%   21, 29, 54, 277
+src/research_assistant/prompts/__init__.py        5      0   100%
+src/research_assistant/prompts/coder.py           1      0   100%
+src/research_assistant/prompts/planner.py         1      0   100%
+src/research_assistant/prompts/reporter.py        1      0   100%
+src/research_assistant/prompts/research.py        1      0   100%
+src/research_assistant/tools/__init__.py          3      0   100%
+src/research_assistant/tools/repl.py              3      0   100%
+src/research_assistant/tools/tavily.py            7      0   100%
+---------------------------------------------------------------------------
+TOTAL                                           425     68    84%
+Coverage HTML written to dir htmlcov
+[36m[1m=========================== short test summary info ============================[0m
+[31mFAILED[0m tests/e2e/test_full_workflow.py::[1mTestMaxIterationsHandling::test_max_iterations_reached[0m - AttributeError: Mock object has no attribute 'invoke'
+[31mFAILED[0m tests/unit/test_planner_agent.py::[1mTestRoutingLogic::test_should_route_to_research_negative_cases[0m - AssertionError: assert True is False
+[31m================== [31m[1m2 failed[0m, [32m85 passed[0m, [33m34 warnings[0m[31m in 0.90s[0m[31m ===================[0m
+
+
+STDERR:
+
+
+Exit Code: 1

@@ -1,0 +1,73 @@
+Test: Unit Tests - Reporter Agent
+Path: tests/unit/test_reporter_agent.py
+Category: Unit Tests
+Execution Time: 2025-11-16T20:38:08.053614
+================================================================================
+
+STDOUT:
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant
+configfile: pyproject.toml
+plugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0
+[1mcollecting ... [0mcollected 9 items
+
+tests/unit/test_reporter_agent.py::TestReporterAgentInitialization::test_initialization_with_default_llm [32mPASSED[0m[33m [ 11%][0m
+tests/unit/test_reporter_agent.py::TestReporterAgentInitialization::test_initialization_with_custom_llm [32mPASSED[0m[33m [ 22%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_research_findings_only [32mPASSED[0m[33m [ 33%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_coder_results_only [32mPASSED[0m[33m [ 44%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_both_results [32mPASSED[0m[33m [ 55%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_no_results [32mPASSED[0m[33m [ 66%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_trace_generation [32mPASSED[0m[33m [ 77%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_empty_research_result [32mPASSED[0m[33m [ 88%][0m
+tests/unit/test_reporter_agent.py::TestSynthesizeMethod::test_synthesize_with_empty_coder_result [32mPASSED[0m[33m [100%][0m
+
+[33m=============================== warnings summary ===============================[0m
+../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397
+  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/unit/test_reporter_agent.py:9
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_reporter_agent.py:9: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+tests/unit/test_reporter_agent.py:29
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/unit/test_reporter_agent.py:29: PytestUnknownMarkWarning: Unknown pytest.mark.unit - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.unit
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.12-final-0 _______________
+
+Name                                          Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------
+src/research_assistant/__init__.py                1      0   100%
+src/research_assistant/agents/__init__.py         4      0   100%
+src/research_assistant/agents/base.py            77     61    21%   31-49, 53-116, 124-148
+src/research_assistant/agents/coder.py           13     13     0%   3-30
+src/research_assistant/agents/planner.py        148    126    15%   43-57, 87-168, 194-244, 256-316, 329-397, 409, 418-419, 428-429
+src/research_assistant/agents/reporter.py        23      0   100%
+src/research_assistant/agents/researcher.py      14      6    57%   15-20, 28-32
+src/research_assistant/graph/__init__.py          3      3     0%   3-6
+src/research_assistant/graph/state.py            14     14     0%   3-20
+src/research_assistant/graph/workflow.py        106    106     0%   3-279
+src/research_assistant/prompts/__init__.py        5      0   100%
+src/research_assistant/prompts/coder.py           1      0   100%
+src/research_assistant/prompts/planner.py         1      0   100%
+src/research_assistant/prompts/reporter.py        1      0   100%
+src/research_assistant/prompts/research.py        1      0   100%
+src/research_assistant/tools/__init__.py          3      0   100%
+src/research_assistant/tools/repl.py              3      1    67%   8
+src/research_assistant/tools/tavily.py            7      4    43%   9-13
+---------------------------------------------------------------------------
+TOTAL                                           425    334    21%
+Coverage HTML written to dir htmlcov
+[33m======================== [32m9 passed[0m, [33m[1m3 warnings[0m[33m in 0.26s[0m[33m =========================[0m
+
+
+STDERR:
+
+
+Exit Code: 0

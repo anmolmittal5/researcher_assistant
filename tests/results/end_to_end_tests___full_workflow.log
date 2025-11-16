@@ -1,0 +1,101 @@
+Test: End-to-End Tests - Full Workflow
+Path: tests/e2e/test_full_workflow.py
+Category: End-to-End Tests
+Execution Time: 2025-11-16T20:38:17.639651
+================================================================================
+
+STDOUT:
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.10.12, pytest-9.0.1, pluggy-1.6.0 -- /Users/anmolmittal/miniforge3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant
+configfile: pyproject.toml
+plugins: mock-3.15.1, anyio-4.9.0, langsmith-0.4.43, cov-7.0.0
+[1mcollecting ... [0mcollected 8 items
+
+tests/e2e/test_full_workflow.py::TestCompleteResearchWorkflow::test_research_query_workflow [32mPASSED[0m[33m [ 12%][0m
+tests/e2e/test_full_workflow.py::TestCompleteCodeWorkflow::test_code_query_workflow [32mPASSED[0m[33m [ 25%][0m
+tests/e2e/test_full_workflow.py::TestCompleteCombinedWorkflow::test_research_and_code_workflow [32mPASSED[0m[33m [ 37%][0m
+tests/e2e/test_full_workflow.py::TestErrorRecovery::test_research_error_recovery [32mPASSED[0m[33m [ 50%][0m
+tests/e2e/test_full_workflow.py::TestMaxIterationsHandling::test_max_iterations_reached [31mFAILED[0m[31m [ 62%][0m
+tests/e2e/test_full_workflow.py::TestLangGraphWorkflow::test_full_workflow_research_only [32mPASSED[0m[31m [ 75%][0m
+tests/e2e/test_full_workflow.py::TestLangGraphWorkflow::test_full_workflow_with_code [32mPASSED[0m[31m [ 87%][0m
+tests/e2e/test_full_workflow.py::TestLangGraphWorkflow::test_workflow_state_persistence [32mPASSED[0m[31m [100%][0m
+
+=================================== FAILURES ===================================
+[31m[1m____________ TestMaxIterationsHandling.test_max_iterations_reached _____________[0m
+[1m[31mtests/e2e/test_full_workflow.py[0m:225: in test_max_iterations_reached
+    [0mnever_finish_llm.invoke.return_value = never_finish_response[90m[39;49;00m
+[1m[31m/Users/anmolmittal/miniforge3/lib/python3.10/unittest/mock.py[0m:643: in __getattr__
+    [0m[94mraise[39;49;00m [96mAttributeError[39;49;00m([33m"[39;49;00m[33mMock object has no attribute [39;49;00m[33m%r[39;49;00m[33m"[39;49;00m % name)[90m[39;49;00m
+[1m[31mE   AttributeError: Mock object has no attribute 'invoke'[0m
+[33m=============================== warnings summary ===============================[0m
+../../../../../../../miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397
+  /Users/anmolmittal/miniforge3/lib/python3.10/site-packages/_pytest/config/__init__.py:1397: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/e2e/test_full_workflow.py:14
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:14: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:67
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:67: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:119
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:119: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:183
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:183: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:214
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:214: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py:242
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/tests/e2e/test_full_workflow.py:242: PytestUnknownMarkWarning: Unknown pytest.mark.e2e - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.e2e
+
+tests/e2e/test_full_workflow.py::TestLangGraphWorkflow::test_workflow_state_persistence
+  /Users/anmolmittal/Documents/DataScience/masters/mtech_semester_1/Data Engineering/project/researcher_assistant/src/research_assistant/tools/tavily.py:13: LangChainDeprecationWarning: The class `TavilySearchResults` was deprecated in LangChain 0.3.25 and will be removed in 1.0. An updated version of the class exists in the `langchain-tavily package and should be used instead. To use it run `pip install -U `langchain-tavily` and import as `from `langchain_tavily import TavilySearch``.
+    return TavilySearchResults(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.10.12-final-0 _______________
+
+Name                                          Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------
+src/research_assistant/__init__.py                1      0   100%
+src/research_assistant/agents/__init__.py         4      0   100%
+src/research_assistant/agents/base.py            77     13    83%   32, 40-47, 116, 137-139, 144-146
+src/research_assistant/agents/coder.py           13      1    92%   16
+src/research_assistant/agents/planner.py        148     90    39%   44, 52-55, 88, 155-163, 166-168, 202-210, 217-224, 231-238, 259-316, 329-397, 409, 418-419, 428-429
+src/research_assistant/agents/reporter.py        23      1    96%   16
+src/research_assistant/agents/researcher.py      14      1    93%   16
+src/research_assistant/graph/__init__.py          3      0   100%
+src/research_assistant/graph/state.py            14      0   100%
+src/research_assistant/graph/workflow.py        106     67    37%   18-30, 54, 98-141, 153-176, 187-213, 224-249, 260-279
+src/research_assistant/prompts/__init__.py        5      0   100%
+src/research_assistant/prompts/coder.py           1      0   100%
+src/research_assistant/prompts/planner.py         1      0   100%
+src/research_assistant/prompts/reporter.py        1      0   100%
+src/research_assistant/prompts/research.py        1      0   100%
+src/research_assistant/tools/__init__.py          3      0   100%
+src/research_assistant/tools/repl.py              3      0   100%
+src/research_assistant/tools/tavily.py            7      1    86%   11
+---------------------------------------------------------------------------
+TOTAL                                           425    174    59%
+Coverage HTML written to dir htmlcov
+[36m[1m=========================== short test summary info ============================[0m
+[31mFAILED[0m tests/e2e/test_full_workflow.py::[1mTestMaxIterationsHandling::test_max_iterations_reached[0m - AttributeError: Mock object has no attribute 'invoke'
+[31m=================== [31m[1m1 failed[0m, [32m7 passed[0m, [33m8 warnings[0m[31m in 0.48s[0m[31m ====================[0m
+
+
+STDERR:
+
+
+Exit Code: 1
