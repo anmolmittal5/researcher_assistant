@@ -16,7 +16,7 @@ from research_assistant.graph.state import AgentState as StateType
 load_dotenv()
 
 st.set_page_config(
-    page_title="Research Assistant",
+    page_title="Cognivia",
     page_icon="🔬",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -81,9 +81,7 @@ def format_trace(trace: Dict[str, Any], agent_name: str = "") -> str:
         html += f'<div class="act-text"><strong>⚡ Act:</strong> {trace["act"]}</div>'
     
     if trace.get("observation"):
-        obs = str(trace["observation"])[:500]
-        if len(str(trace["observation"])) > 500:
-            obs += "..."
+        obs = str(trace["observation"])
         html += f'<div class="observation-text"><strong>👁️ Observation:</strong> {obs}</div>'
     
     html += '</div>'
@@ -196,8 +194,8 @@ def run_workflow_streaming(goal: str, chat_container, logs_container):
 
 def main():
     """Main Streamlit application."""
-    # Header
-    st.markdown('<div class="main-header">🔬 Research Assistant</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">Cognivia</div>', unsafe_allow_html=True)
+    st.markdown('<p style="text-align: center; font-size: 1.2rem; color: #666; margin-top: -1rem; margin-bottom: 2rem;">Your personal research assistant</p>', unsafe_allow_html=True)
     st.markdown("---")
     
     with st.sidebar:
@@ -210,12 +208,7 @@ def main():
             disabled=True
         )
         
-        st.subheader("Options")
-        use_drive = st.checkbox("Enable Google Drive", value=False)
-        show_raw_traces = st.checkbox("Show Raw Traces", value=False)
-        
         st.markdown("---")
-        st.info("💡 **Tip:** Enable Google Drive to search internal documents alongside web research.")
         
         if st.button("🗑️ Clear Chat", use_container_width=True):
             st.session_state.messages = []
@@ -240,7 +233,8 @@ def main():
         user_input = st.chat_input("Enter your research query or task...")
         
         if user_input:
-            st.session_state.messages.append({"role": "user", "content": user_input})
+            with st.chat_message("user"):
+                st.markdown(user_input)
             
             # Create logs container in the right column
             with col2:
@@ -259,6 +253,7 @@ def main():
                 else:
                     response_content = result.get("plan", "Task completed.")
                 
+                st.session_state.messages.append({"role": "user", "content": user_input})
                 st.session_state.messages.append({
                     "role": "assistant",
                     "content": response_content
