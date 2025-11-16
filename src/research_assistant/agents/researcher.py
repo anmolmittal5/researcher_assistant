@@ -1,27 +1,21 @@
-"""Research agent for gathering evidence from web and documents."""
+"""Research agent for gathering evidence from web sources."""
 
 from typing import Dict, Any, List
 from langchain_openai import ChatOpenAI
 from research_assistant.agents.base import BaseReActAgent
 from research_assistant.prompts.research import RESEARCH_PROMPT
-from research_assistant.tools import get_tavily_tool, get_drive_mcp_tools
+from research_assistant.tools import get_tavily_tool
 
 
 class ResearchAgent(BaseReActAgent):
-    """Agent that gathers evidence using Tavily Search and Google Drive via MCP."""
+    """Agent that gathers evidence using Tavily Search."""
 
-    def __init__(self, llm: ChatOpenAI = None, use_drive: bool = False):
+    def __init__(self, llm: ChatOpenAI = None):
         """Initialize Research agent with LLM and tools."""
         if llm is None:
             llm = ChatOpenAI(model="gpt-4o", temperature=0)
         
         tools: List = [get_tavily_tool()]
-        if use_drive:
-            try:
-                drive_tools = get_drive_mcp_tools()
-                tools.extend(drive_tools)
-            except Exception as e:
-                print(f"Warning: Could not load Drive MCP tools: {e}")
         
         super().__init__(
             llm=llm,
